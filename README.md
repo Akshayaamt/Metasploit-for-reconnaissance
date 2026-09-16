@@ -24,24 +24,24 @@ Open terminal and try execute some kali linux commands
 
 Find out the ip address of the attackers system
 ## OUTPUT:
+<img width="1600" height="869" alt="1st" src="https://github.com/user-attachments/assets/47b632e4-a335-4346-8275-ca166266cfff" />
 
-<img width="928" height="376" alt="Screenshot 2026-08-20 105028" src="https://github.com/user-attachments/assets/6a5fa921-0aa5-4261-9252-830185c34717" />
 
 Invoke msfconsole:
 ## OUTPUT:
+<img width="1600" height="869" alt="WhatsApp Image 2026-08-20 at 11 49 15 AM" src="https://github.com/user-attachments/assets/5089f280-b60a-445d-bd3c-f79854c9e1f8" />
 
-<img width="647" height="408" alt="Screenshot 2026-08-25 194426" src="https://github.com/user-attachments/assets/d9448447-99ba-4a11-ab0e-8642ed5a99c3" />
 
 Type help or a question mark "?" to see the list of all available commands you can use inside msfconsole.
 
-<img width="1579" height="997" alt="Screenshot 2026-08-20 110402" src="https://github.com/user-attachments/assets/c4375ff1-9625-4948-9fb6-2b5e810ffeef" />
+
+
 
 Port Scanning:
 Following command is executed for scanning the systems on our local area network with a TCP scan (-sT) looking for open ports between 1 and 1000 (-p1-1000).
 msf >  nmap -sT 192.168.1810/24 -p1-1000  (Replace with appropriate IP Address)
 ## OUTPUT:
-
-<img width="1617" height="532" alt="Screenshot 2026-09-01 135444" src="https://github.com/user-attachments/assets/b55b1475-e7a4-4e1d-828f-1421d041157b" />
+<img width="1600" height="869" alt="WhatsApp Image 2026-08-20 at 11 49 16 AM" src="https://github.com/user-attachments/assets/6281355a-03da-4e7e-9043-464d5d165572" />
 
 step4:
 use the db-nmap command to scan and save the results into Metasploit's postgresql attached database. In that way, you can use those results in the exploitation stage later.
@@ -49,62 +49,82 @@ use the db-nmap command to scan and save the results into Metasploit's postgresq
 scan the targets with the command db_nmap as follows.
 msf > db_nmap 192.168.181.0/24
 ## OUTPUT:
+<img width="946" height="446" alt="Screenshot 2026-08-20 194321" src="https://github.com/user-attachments/assets/6fe7c88d-809d-41a4-858a-af786bccda34" />
 
-<img width="1605" height="370" alt="Screenshot 2026-09-01 135916" src="https://github.com/user-attachments/assets/0b229889-8c9c-48c0-bdf1-9e0db9bc9b9b" />
-
+<img width="417" height="77" alt="Screenshot 2026-08-20 194502" src="https://github.com/user-attachments/assets/76cd57ef-3273-4974-a990-6d4fd327f85d" />
 
 Metasploit has a multitude of scanning modules built in. If we open another terminal, we can navigate to Metasploit's auxiliary modules and list all the scanner modules.
 cd /usr/share /metasploit-framework/modules/auxiliary
 kali > ls -l
 ## OUTPUT:
+<img width="647" height="198" alt="Screenshot 2026-08-20 200122" src="https://github.com/user-attachments/assets/05832c3b-d337-454a-9c2c-2f1820a1a815" />
 
-<img width="722" height="463" alt="Screenshot 2026-08-20 113042" src="https://github.com/user-attachments/assets/ddd5cc6d-28ed-49db-8261-9be0f17cda9d" />
+
+
+
 
 Search is a powerful command in Metasploit that you can use to find what you want to locate. 
 msf >search name:Microsoft type:exploit
 ## OUTPUT:
 
-<img width="986" height="973" alt="image" src="https://github.com/user-attachments/assets/a9b94c36-9974-4bff-82d9-44e67c0a824e" />
+<img width="1600" height="869" alt="WhatsApp Image 2026-08-20 at 11 49 16 AM (2)" src="https://github.com/user-attachments/assets/e99e4901-b0f7-49ae-9003-6d317879f5d0" />
+
 
 The info command provides information regarding a module or platform,
-
-<img width="1095" height="754" alt="Screenshot 2026-08-20 114332" src="https://github.com/user-attachments/assets/35a70eee-d566-4626-80f2-d7378cb165b9" />
 
 Before beginning, set up the Metasploit database by starting the PostgreSQL server and initialize msfconsole database as follows:
 systemctl start postgresql
 msfdb init
+## OUTPUT:
+<img width="626" height="343" alt="image" src="https://github.com/user-attachments/assets/2f4c7ed3-7e97-4adc-964c-1d4c0f810a3f" />
+
+
+
+
+
+
+
 ## MYSQL ENUMERATION
 Find the IP address of the Metasploitable machine first. Then, use the db_nmap command in msfconsole with Nmap flags to scan the MySQL database at 3306 port.
 db_nmap -sV -sC -p 3306 <metasploitable_ip_address>
 
 ## OUTPUT:
+<img width="644" height="136" alt="image" src="https://github.com/user-attachments/assets/fc863ffb-609e-482f-8918-6bacaf68950d" />
 
-<img width="1598" height="326" alt="Screenshot 2026-09-01 135015" src="https://github.com/user-attachments/assets/84a532a3-6e53-4cfc-954d-1c01eca3f672" />
 
 
 Use the search option to look for an auxiliary module to scan and enumerate the MySQL database.
 search type:auxiliary mysql
 ## OUTPUT:
+<img width="1600" height="869" alt="WhatsApp Image 2026-08-20 at 11 49 16 AM (3)" src="https://github.com/user-attachments/assets/4fd64ea1-e533-4f41-bc23-da3b5c6d54ec" />
 
-<img width="1045" height="541" alt="Screenshot 2026-08-21 103525" src="https://github.com/user-attachments/assets/38ed7e91-35f9-4056-ae13-04417f9dd13a" />
+
+
 
 use the auxiliary/scanner/mysql/mysql_version module by typing the module name or associated number to scan MySQL version details.
 use 11
 Or:
 use auxiliary/scanner/mysql/mysql_version
 ## OUTPUT:
+<img width="833" height="618" alt="image" src="https://github.com/user-attachments/assets/f11392b5-2be7-45d3-b05d-c79ee40ff4dc" />
 
-<img width="934" height="372" alt="Screenshot 2026-08-21 104519" src="https://github.com/user-attachments/assets/1cc7ae67-85dd-4a4c-9c8a-0dec0a9f22f9" />
+
+
+
 
 Use the set rhosts command to set the parameter and run the module, as follows:
 ## OUTPUT:
+<img width="627" height="118" alt="image" src="https://github.com/user-attachments/assets/0a0dedc6-61de-4ecc-ab24-f41e759bc138" />
 
-<img width="665" height="133" alt="Screenshot 2026-08-21 104717" src="https://github.com/user-attachments/assets/408f0ad0-5606-4da9-8aa3-f6c7f4158a14" />
 
-After scanning, you can also brute force MySQL root account via Metasploit's auxiliary(scanner/mysql/mysql_login) module.
-## OUTPUT:
 
-<img width="923" height="607" alt="Screenshot 2026-08-21 104859" src="https://github.com/user-attachments/assets/e23af83a-45b9-45c8-95c1-c9431c343b6a" />
+
+
+
+
+
+
+
 
 set the PASS_FILE parameter to the wordlist path available inside /usr/share/wordlists:
 set PASS_FILE /usr/share/wordlistss/rockyou.txt
@@ -113,8 +133,11 @@ set RHOSTS <metasploitable-ip-address>
 Set BLANK_PASSWORDS to true in case there is no password set for the root account.
 set BLANK_PASSWORDS true
 ## OUTPUT:
+<img width="644" height="183" alt="image" src="https://github.com/user-attachments/assets/c17f2885-80fd-4c18-ace4-ced45fc240fa" />
 
-<img width="802" height="222" alt="Screenshot 2026-08-21 104210" src="https://github.com/user-attachments/assets/5597ad2b-e19a-43c2-bb36-c5ea5aca530b" />
+
+
+
 
 ## RESULT:
 The Metasploit framework for reconnaissance is  examined successfully
